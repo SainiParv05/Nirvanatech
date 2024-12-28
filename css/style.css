@@ -653,10 +653,20 @@ Contact Page CSS
 Product Page CSS
 ============================== */
 
+.product .banner_section {
+    background: url('../images/services/bg.jpg');
+}
+
 .product .product-details p {
     margin-bottom: 1.5rem;
 
 
 }
 
+.data-cleaning .banner_section {
+    background: url('../images/about/about-banner.jpg');
+}
 
+.data-cleaning .product-details h1 {
+    margin-top: 1.5rem;
+}
