@@ -1,0 +1,25 @@
+name: Send Email on Form Submission
+
+on:
+  push:
+    paths:
+      - "form_submissions/*.json"
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "New Form Submission"
+          body: "A new form submission has been received."
+          to: parvsaini05@gmail.com
+          from: ${{ secrets.EMAIL_USERNAME }}
