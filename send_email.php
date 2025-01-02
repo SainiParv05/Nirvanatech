@@ -1,20 +1,21 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
-    $message = $_POST['message'];
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $message = htmlspecialchars($_POST['message']);
 
-    $to = "parvsaini05@gmail.com";
+    $to = "parvsaini05@gmail.com"; // Replace with your email address
     $subject = "New Contact Form Submission";
-    $body = "Name: $name\nEmail: $email\nAddress: $address\nPhone: $phone\nMessage: $message";
+    $body = "Name: $name\nEmail: $email\nPhone_no: $phone\nMessage:\n$message";
     $headers = "From: $email";
 
     if (mail($to, $subject, $body, $headers)) {
-        echo "Mail Sent Successfully!";
+        echo "Mail sent successfully.";
     } else {
-        echo "Mail Sending Failed!";
+        echo "Failed to send mail.";
     }
+} else {
+    echo "Invalid request.";
 }
 ?>
