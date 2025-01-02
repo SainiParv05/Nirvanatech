@@ -3,7 +3,7 @@ name: Send Email on Form Submission
 on:
   push:
     paths:
-      - "form_submissions/*.json"
+      - "form_submissions/*.json"  # Trigger only for new JSON files
 
 jobs:
   send_email:
@@ -20,6 +20,6 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "New Form Submission"
-          body: "A new form submission has been received."
+          body: "A new form submission has been received. Please check the repository."
           to: parvsaini05@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
