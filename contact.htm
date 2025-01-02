@@ -88,7 +88,7 @@
                     <div class="row">
                         <div class="col-lg-7 mb-5">
                             <!-- Your existing form code here -->
-                            <form class="row g-3" action="send_email.php" method="post">
+                            <form id="contactForm">
                                 <div class="col-md-6 mb-4">
                                     <input type="text" class="form-control" name="name" placeholder="Your Name *" required="">
                                 </div>
@@ -108,7 +108,25 @@
                                     <button type="submit" class="btn main-btn">Send Message</button>
                                 </div>
                             </form>
-
+                            <script>
+                                document.getElementById('contactForm').addEventListener('submit', function(event) {
+                                    event.preventDefault();
+                        
+                                    const formData = {
+                                        name: document.getElementById('name').value,
+                                        email: document.getElementById('email').value,
+                                        message: document.getElementById('message').value,
+                                    };
+                        
+                                    // Save formData to a file (GitHub Pages workaround)
+                                    const blob = new Blob([JSON.stringify(formData, null, 2)], { type: 'application/json' });
+                                    const a = document.createElement('a');
+                                    a.href = URL.createObjectURL(blob);
+                                    a.download = `form_submission_${Date.now()}.json`;
+                                    a.click();
+                                });
+                            </script>
+                                
 
                         </div>
                         
@@ -119,14 +137,14 @@
                                         <i class="fas fa-phone-alt"></i>
                                         <p>Any Questions? Call us</p>
                                         <div>
-                                            <a href="#">+91 8449395951</a>
+                                            <a href="tel:+918449395951">+91 8449395951</a>
                                         </div>
                                     </li>
                                     <li>
                                         <i class="far fa-envelope-open"></i>
                                         <p>Any Questions? Email us</p>
                                         <div>
-                                            <a href="#">support@nirvanatech.co.in</a>
+                                            <a href="mailto:support@nirvanatech.co.in">support@nirvanatech.co.in</a>
                                         </div>
                                     </li>
                                 </ul>
